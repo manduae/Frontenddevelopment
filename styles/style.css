@@ -1,0 +1,403 @@
+/* CSS Document */
+*, *::after, *::before {
+  box-sizing:border-box; 
+}
+
+html {
+  overflow-x: hidden;
+}
+
+/* Header */
+header {
+  position: relative;
+  background-color: #da2037;
+  border-bottom: 0.3em solid #252525;
+  height: 16vh;
+}
+
+header img {
+  position: absolute;
+  top: 4vh;
+  height: 25vh;
+  width: 20vh;
+  z-index: 2;
+  max-height: 30vh;
+  max-width: 30vh;
+}
+
+/* Body */
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  cursor: default;
+}
+
+
+/* Navigatie, gekeken naar voorbeelden van code voor inspiratie via https://dev.to/ljcdev/easy-hamburger-menu-with-js-2do0 */
+
+.hamburgermenu{
+  position: absolute;
+  z-index: 1000;
+  top: 1.4em;
+  right: 1.4em;
+  width: 4em;
+  height: 4em;
+  border: none;
+  background-size: 100%;
+  background-image: url('../images/Hamburger_icon.png');
+}
+
+
+nav {
+position: absolute;
+top: 6em;
+left: 0;
+background: #252525;
+width: 100vw;
+height: 44vh;
+overflow: hidden;
+color: white;
+transform: translateY(-150%);
+transition: transform 1s ease-out;
+z-index: 1;
+}
+
+.showNav {
+transform: translateY(0);
+}
+
+.showClose {
+background-image: url('../images/Close_icon.png');
+}
+
+nav ul {
+width: 100%;
+height: 90%;
+list-style: none;
+display: flex;
+flex-flow: column nowrap;
+justify-content: space-evenly;
+align-items: center;
+}
+
+nav ul li a {
+color: white;
+padding-bottom: 10px;
+text-decoration: none;
+font-family: sans-serif, bold;
+font-size: 14pt;
+text-transform: uppercase;
+}
+
+
+/* pseudo classes nav links */
+
+nav a:hover {
+  color: #ffd503;
+}
+
+nav a.active {
+  color: #ffd503;
+}
+
+/* main */
+main img {
+  width: 100%;
+  max-height: 55vh;
+} 
+
+/* uitklapmenu productenpagina, gebruik gemaakt van het details-element op https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details */
+
+details {
+  border: #4C4C3D 0.1em solid;
+}
+
+details > summary {
+  font-family: sans-serif, bold;
+  font-size: 22pt;
+  text-align: left;
+  padding: 0;
+  color: #4c4c4c;
+  text-decoration-line: underline;
+  margin: 1em;
+  list-style-image: url('../images/snor.png');
+}
+
+details > summary::-webkit-details-marker {
+  background: url('../images/snor.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  color:transparent;
+}
+
+summary:focus::-webkit-details-marker {
+  background: url('../images/snor.png');
+  color:transparent;
+}
+
+/* pseudo classes uitklapmenu */
+
+details > summary:hover {
+  background-color: #ffd503;
+  color: white;
+}
+
+details > summary:focus {
+  background-color: #da2037;
+  color: white;
+}
+
+details > p {
+  font-family: sans-serif;
+  font-size: 12pt;
+  text-align: left;
+  padding: 1em 2em;
+  color: #4C4C3D;
+}
+
+details > .smaken {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(7em, 1fr));
+  grid-gap: 2em;
+  padding: 0;
+  margin: 0 1em;
+  align-items: baseline;
+  text-align: center;
+}
+
+details > .smaken li {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  margin-bottom: 3em;
+  list-style: none;
+  font-family: sans-serif;
+  font-size: 10pt;
+  color: #da2037;
+}
+
+details > .smaken img {
+  display: flex;
+  width: 4em;
+  transform: scale(1);
+  margin: 0 auto;
+  padding-bottom: 0em;
+}
+
+/* Pseudo class images: de pringles bussen staan op hun kop bij hover */
+
+.smaken li:hover {
+  transform: scale(1.2);
+}
+
+.smaken img:hover {
+  transform: scale(1);
+}
+
+
+/* detailpagina */
+
+img.tegels {
+  position: relative;
+  width: 100%;
+  max-height: 45vh;
+}
+
+@keyframes scrolling-achtergrond {
+
+  0% {
+    opacity:0%;
+  }
+
+  25% {
+    opacity: 0%;
+  }
+
+  50% {
+    opacity: 50%;
+  }
+
+  100% {
+    opacity: 100%;
+  }
+}
+
+img.tegels {
+  animation-name: scrolling-achtergrond;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+
+
+.original {
+  position: relative;
+}
+
+div {
+  position: absolute;
+  left: calc(50% - 3em);
+  top: -12em;
+  max-width: 100%;
+  width: 6.8em;
+  height: auto;
+  border: 0.2em solid #da2037;
+}
+
+
+/* original animatie 1, Pringles-bus schud zijwaards heen en weer */
+
+@keyframes original-animation {
+  0% {
+    transform:rotate(0);
+  }
+
+  25% {
+    transform:rotate(15deg);
+  }
+
+  50% {
+    transform:rotate(0);
+  }
+
+  75% {
+    transform:rotate(-15deg);
+  }
+
+  100% {
+    transform:rotate(0);
+  }
+}
+
+section.original div {
+  animation-name: original-animation;
+  animation-duration: .5s;
+  animation-iteration-count: infinite;
+}
+
+/* original animatie 1, Pringles-bus schud verticaal op en neer */
+
+@keyframes original-schud-animation {
+  0% {
+    transform: translateY(-30px) translateY(-30px); 
+  }
+
+  50% {
+    transform: translateY(20px) translateY(20px);
+  }
+
+  100% {
+    transform: translateY(-30px) translateY(-30px)
+  }
+}
+
+section.original:hover div {
+  animation-name: original-schudden-animation;
+  animation-duration: .1s;
+  animation-iteration-count: 4;
+}
+
+
+/* Gekopieerd van: original animatie 2
+@keyframes original-rotate-animation {
+  0% {
+    transform:rotate(20deg);
+  }
+  50% {
+    transform:rotate(20deg);
+  }
+  100% {
+    transform:rotate(20deg);
+  }
+}
+@keyframes original-schud-animation {
+  0% {
+    transform: translateX(-30px) translateY(-30px); 
+  }
+  50% {
+    transform: translateX(20px) translateY(20px);
+  }
+  100% {
+    transform: translateX(-30px) translateY(-30px)
+  }
+}
+section.original div {
+  animation-name: original-rotate-animation, original-schud-animation;
+  animation-fill-mode: forwards,initial;
+  animation-duration: 3s;
+  animation-iteration-count:3;
+  animation-delay: 1s, 2s;
+} */
+
+
+/* Content */
+
+h1 {
+  font-family: sans-serif, bold;
+  font-size: 22pt;
+  text-align: left;
+  padding: 4em 1em 0em 1em;
+  color: #4c4c4c;
+  margin-bottom: 0;
+}
+
+p {
+  font-family: sans-serif;
+  font-size: 14px;
+  text-align: left;
+  padding: 1em 2em;
+  color: #4C4C3D;
+}
+
+.social {
+  margin: 1em;
+}
+
+.social img {
+  width: 4em;
+  margin: 0 0.5em;
+}
+
+.social img:hover {
+  opacity: 80%;
+}
+
+/* Footer */
+
+footer {
+  text-align: center;
+  background-color: #252525;
+  padding: 1em;
+}
+
+footer ul{
+  padding: 0;
+}
+
+footer li {
+  list-style: none;
+  font-family: sans-serif;
+  font-size: 14px;
+  color: #fff; 
+  text-decoration: none;
+  justify-content: center; 
+}
+
+footer li img {
+  height: auto;
+  width: auto;
+  max-width: 85%;
+  margin: 1em auto 0 auto;
+}
+
+footer a {
+  font-family: sans-serif;
+  font-size: 14px;
+  color: #fff; 
+  text-decoration: none;
+  justify-content: center; 
+}
+
+footer a:hover {
+  color:#ffd503;
+}
